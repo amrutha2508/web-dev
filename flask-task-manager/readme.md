@@ -1,3 +1,7 @@
+## Flask-task-manager
+<img width="337" height="278" alt="image" src="https://github.com/user-attachments/assets/90696d28-5778-4f73-bf6c-59eb19e043c7" />
+
+
 1. Open the folder to have your project on VScode
 2. Run following commands on terminal
 3.     pip3 install virtualenv
