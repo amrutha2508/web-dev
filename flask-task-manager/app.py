@@ -65,4 +65,6 @@ def update(id):
 
 
 if __name__ == "__main__": # Checks if this file is being run directly
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
