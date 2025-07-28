@@ -3,6 +3,7 @@
 3.     pip3 install virtualenv
 4.     python3 -m virtualenv env # for creating env in the folder.
 5.     source env/bin/activate # to activate the env
+6.     pip3 install flask flask-sqlalchemy
 Some syntax for template inheritance
 1.      {% block head %} {% endblock head %} # for write code parts like if/else for loops statements
 2.      {{ code }} # gives you the result of the code as a string
