@@ -19,5 +19,16 @@ When dealing with databases, if you want to access the db related to app i.e, "s
 1.      export FLASK_APP=flaskblog.py # By using flask shell we can eliminate the need for app.app_context()
 2.      flask shell # to open the flask shell, an empty instance folder will be created
 3.      from flaskblog import User, Post, db
-4.      db.create_all() # Now you can site.db in the instance folder 
+4.      db.create_all() # Now you can site.db in the instance folder
+        >> user_1 = User(username="Corey", email="c@demo.com",password="password")
+        >>> db.session.add(user_1)
+        >>> user_2 = User(username="John Doe", email="jd@demo.com",password="password")
+        >>> db.session.add(user_2)
+        >>> db.session.commit()
+        >>> User.query.all()
+        [User('Corey','c@demo.com','default.jpeg'), User('John Doe','jd@demo.com','default.jpeg')]
+        >>> User.query.first()
+        User('Corey','c@demo.com','default.jpeg')
+        >>> User.query.filter_by(username="Corey").all()
+        [User('Corey','c@demo.com','default.jpeg')]
 
