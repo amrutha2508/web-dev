@@ -14,5 +14,10 @@
   <img src="https://github.com/user-attachments/assets/0dae322f-0405-438e-b558-9ea8c68489cc" width="300"/>
 </div>
 
-
+### Accessing DB via Terminal 
+When dealing with databases, if you want to access the db related to app i.e, "site.db" run the followng commands first on the terminal after activating the env
+1.      export FLASK_APP=flaskblog.py # By using flask shell we can eliminate the need for app.app_context()
+2.      flask shell # to open the flask shell, an empty instance folder will be created
+3.      from flaskblog import User, Post, db
+4.      db.create_all() # Now you can site.db in the instance folder 
 
