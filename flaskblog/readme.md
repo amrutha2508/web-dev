@@ -31,4 +31,30 @@ When dealing with databases, if you want to access the db related to app i.e, "s
         User('Corey','c@demo.com','default.jpeg')
         >>> User.query.filter_by(username="Corey").all()
         [User('Corey','c@demo.com','default.jpeg')]
+        >>> user = User.query.filter_by(username="Corey").first()
+        >>> user.id
+        1
+        >>> user
+        User('Corey','c@demo.com','default.jpeg')
+    
+  
+        >>> post_1 = Post(title="block1",content="first post content", user_id = user.id)
+        >>> post_2 = Post(title="block2",content="Second post content", user_id = user.id)
+        >>> db.session.add(post_1)
+        >>> db.session.add(post_2)
+        >>> db.session.commit()
+        >>> user.posts
+        [Post('block1','2025-07-29 22:32:46.876946'), Post('block2','2025-07-29 22:32:46.877167')]
+        >>> for post in user.posts:
+        ...     print(post.title)
+        ... 
+        block1
+        block2
+        >>> post = Post.query.first()
+        >>> post
+        Post('block1','2025-07-29 22:32:46.876946')
+        >>> post.user_id
+        1
+        >>> post.author
+        User('Corey','c@demo.com','default.jpeg')
 
