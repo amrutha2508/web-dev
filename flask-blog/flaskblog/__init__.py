@@ -1,6 +1,8 @@
 # intializes and ties together everything we need for our app
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy # SQLAlchemy is a class from flask_sqlalchemy
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
 
 
@@ -14,5 +16,8 @@ db = SQLAlchemy(app) # creating a database instance
 # Read your database configuration from app.config
 # Register itself with your app
 # Set up the connection to your database
-
+bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
+login_manager.login_view = 'login' # Tells the extension where the login route is located, we passed the funciton name of the route 
+login_manager.login_message_category = "info"
 from flaskblog import routes
