@@ -14,6 +14,11 @@
   <img src="https://github.com/user-attachments/assets/0dae322f-0405-438e-b558-9ea8c68489cc" width="300"/>
 </div>
 
+### Intial steps to work with the flask-blog
+1.     source env/bin/activate # activate the virtual env
+2.     export FLASK_APP=run.py # Add a FLASK_APP environment variable
+
+
 ### Accessing DB via Terminal 
 When dealing with databases, if you want to access the db related to app i.e, "site.db" run the followng commands first on the terminal after activating the env
 1.      export FLASK_APP=flaskblog.py # By using flask shell we can eliminate the need for app.app_context()
