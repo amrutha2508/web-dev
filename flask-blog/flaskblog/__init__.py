@@ -1,8 +1,10 @@
 # intializes and ties together everything we need for our app
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy # SQLAlchemy is a class from flask_sqlalchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+from flask_mail import Mail
 
 
 
@@ -20,4 +22,12 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login' # Tells the extension where the login route is located, we passed the funciton name of the route 
 login_manager.login_message_category = "info"
+app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+
+# app.config['MAIL_USERNAME'] = 'enter your email'
+# app.config['MAIL_PASSWORD'] = 'your_16_character_app_password'
+mail = Mail(app) 
+
 from flaskblog import routes
