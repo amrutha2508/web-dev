@@ -1,6 +1,7 @@
 from itsdangerous import URLSafeTimedSerializer as Serializer
 from datetime import datetime
-from flaskblog import db, login_manager, app
+from flaskblog import db, login_manager
+from flask import current_app
 from flask_login import UserMixin # UserMixin is used to implement four functions for the User model; is_authenticated -> returns true if provided valid credentials, is_active, is_annonymous, get_id
 
 @login_manager.user_loader #This tells Flask-Login how to retrieve a user object (typically from the database) given a user ID stored in the session cookie.
@@ -17,14 +18,14 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Post', backref="author", lazy=True) # by using 'Post' we are actually referencing Post class
 
     def get_reset_token(self):
-        s = Serializer(app.config['SECRET_KEY'])
+        s = Serializer(current_app.config['SECRET_KEY'])
         return s.dumps({'user_id':self.id})
   
 
     
     @staticmethod # telling python not to expect self parameter as an argument
     def verify_reset_token(token): # static method
-        s = Serializer(app.config['SECRET_KEY'])
+        s = Serializer(current_app.config['SECRET_KEY'])
         try:
             user_id = s.loads(token, max_age=300)['user_id']
             return User.query.get(user_id)
