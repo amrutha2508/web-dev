@@ -9,15 +9,35 @@ apath = {
     'k': './sounds/kick-bass.mp3',
     'l': './sounds/crash.mp3'
 }
+
 for(let i=0; i<numofdrumbuttons; i++){
     document.querySelectorAll('.drum')[i].addEventListener("click",function (){
-        var audio = new Audio(epath[this.classList[0]])
-        audio.play();
+        makeSound(this.classList[0]);
+        buttonAnimation(this.classList[0]);
+        // resetButtonAnimation(this.classList[0])
     })
 }
 
+document.addEventListener('keypress',function(event){
+    makeSound(event.key);
+    buttonAnimation(event.key);
 
+})
 
+function buttonAnimation(buttonKey){
+    var button = document.querySelector('.'+buttonKey);
+    if (button){
+        button.classList.add('pressed');
+        setTimeout(function(){
+            button.classList.remove('pressed');
+        },100)
+    }
+}
+
+function makeSound(key){
+    var audio = new Audio(apath[key]);
+    audio.play();
+}
 // function Instrument(name, pathToAudioFile, pathToImageFile){
 //     this.name = name;
 //     this.pathToAudioFile = pathToAudioFile;
