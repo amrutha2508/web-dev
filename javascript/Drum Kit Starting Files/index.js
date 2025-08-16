@@ -38,6 +38,8 @@ function makeSound(key){
     var audio = new Audio(apath[key]);
     audio.play();
 }
+
+// changed the git cinfig user.email
 // function Instrument(name, pathToAudioFile, pathToImageFile){
 //     this.name = name;
 //     this.pathToAudioFile = pathToAudioFile;
