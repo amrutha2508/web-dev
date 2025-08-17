@@ -62,11 +62,10 @@ function userSequence() {
                 console.log("✅ Correct sequence!");
                 level++;
                 setTimeout(() => {
-                    nextSequence();
-                    animateSequence(gamePattern);
-                    userSequence();
+                    nextRound();
                 }, 1000);
             } else {
+                $('h1').html('Game Over<br>Score level: ' + level + '<br>Press any key to restart the game')
                 console.log("❌ Wrong sequence. Game Over.");
                 win = false;
                 gamePattern=[]
@@ -83,6 +82,7 @@ function nextRound() {
     if (!win) return;
 
     console.log("⭐ Level " + level);
+    $('h1').text('⭐ Level '+level);
     nextSequence();             // add a new random color
     animateSequence();          // show pattern
     userSequence();             // then wait for user input
@@ -91,6 +91,7 @@ function nextRound() {
 
 // Start game on keypress
 $(document).on('keypress', function () {
+
     console.log('Game started');
     win = true;
     gamePattern = [];
